@@ -10,7 +10,6 @@ public class Main {
         findMinMax(integerList.stream(),
                 Integer::compareTo,
                 (x, y) -> System.out.println("Min number: " + x + "\nMax number: " + y));
-
         System.out.println("\nЗадание 2");
         evenNumbers(integerList);
     }
