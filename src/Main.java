@@ -10,7 +10,6 @@ public class Main {
         findMinMax(integerList.stream(),
                 Integer::compareTo,
                 (x, y) -> System.out.println("Min number: " + x + "\nMax number: " + y));
-
         System.out.println("\nЗадание 2");
         evenNumbers(integerList);
     }
@@ -21,12 +20,10 @@ public class Main {
                                        BiConsumer<? super T, ? super T> minMaxConsumer) {
 
         List<? extends T> list = stream.sorted(order).toList();
-
-        if (!list.isEmpty()) {
-            minMaxConsumer.accept(list.get(0), list.get(list.size() - 1));
-        } else {
-            minMaxConsumer.accept(null, null);
-        }
+        minMaxConsumer.accept(
+                list.stream().min(order).orElse(null),
+                list.stream().max(order).orElse(null)
+        );
 
     }
 
